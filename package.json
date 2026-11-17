@@ -1,0 +1,58 @@
+{
+  "name": "dsh-media-desk-lanjing",
+  "version": "0.2.0",
+  "description": "揽京灵感工作台：基于 dsh-media-desk（自媒体工作台）的分叉，新增每日房产「灵感源」（北京/全国/海外新闻、宏观数据、房产政策、北京土拍、社区热梗、服务器网签洞察），一句话记灵感，一键成稿。",
+  "type": "module",
+  "main": "src/host.js",
+  "exports": {
+    ".": "./src/host.js",
+    "./client": "./dist/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.1-rc.5 <0.3.0"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chang-Tong/dsh-media-desk-lanjing.git"
+  },
+  "homepage": "https://github.com/Chang-Tong/dsh-media-desk-lanjing#readme",
+  "bugs": "https://github.com/Chang-Tong/dsh-media-desk-lanjing/issues",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "test": "node --test --test-concurrency=2 test/*.test.js",
+    "assets": "python3 scripts/gen-assets.py",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.10"
+  },
+  "files": [
+    "src",
+    "dist",
+    "assets",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ]
+}
